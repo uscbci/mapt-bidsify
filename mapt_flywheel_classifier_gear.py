@@ -16,8 +16,8 @@ with open(api_key_file,'r') as file:
 #Set up the flywheel API
 fw = flywheel.Client(api_key)
 
-#Get the SAGE project
-project_id = "64935df4a60b3a64d6add007"
+#Get the MAPT project
+project_id = "6917882482ed73886201c816"
 project = fw.get(project_id)
 
 #Get the BIDS curation gear

@@ -17,11 +17,11 @@ with open(api_key_file,'r') as file:
 #Set up the flywheel API
 fw = flywheel.Client(api_key)
 
-#Get the SAGE project
-project_id = "64935df4a60b3a64d6add007"
+#Get the MAPT project
+project_id = "6917882482ed73886201c816"
 project = fw.get(project_id)
 
-to_exclude = ["12834"]
+to_exclude = []
 
 to_bidsify = []
 for subject in project.subjects():
@@ -40,18 +40,18 @@ print("The following subjects will need to have the Curate BIDS gear run:")
 print(to_bidsify)
 
 for subject in to_bidsify:
-    # Do BIDS curation on flywheel
-    command = "%s/sage_flywheel_bids_gear.py %s %s" % (code_dir,subject,api_key)
+    # # Do BIDS curation on flywheel
+    command = "%s/mapt_flywheel_bids_gear.py %s %s" % (code_dir,subject,api_key)
     print(command)
-    call(command,shell=True)
+    # call(command,shell=True)
 
-    # Download the BIDS-curated data
-    command = "%s/sage_flywheel_export_bids.py %s %s" % (code_dir,subject,api_key)
+    # # Download the BIDS-curated data
+    command = "%s/mapt_flywheel_export_bids.py %s %s" % (code_dir,subject,api_key)
     print(command)
-    call(command,shell=True)
+    # call(command,shell=True)
 
-    # Fix BIDS-curated data to meet validation standards
-    command = "%s/sage_flywheel_fixbids.py %s" % (code_dir,subject)
+    # # Fix BIDS-curated data to meet validation standards
+    command = "%s/mapt_flywheel_fixbids.py %s" % (code_dir,subject)
     print(command)
-    call(command,shell=True)
+    # call(command,shell=True)
 

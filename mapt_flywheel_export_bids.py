@@ -17,11 +17,11 @@ with open(api_key_file,'r') as file:
 #Set up the flywheel API
 fw = flywheel.Client(api_key)
 
-#Get the SAGE project
-project_id = "64935df4a60b3a64d6add007"
+#Get the MAPT project
+project_id = "6917882482ed73886201c816"
 project = fw.get(project_id)
 
-to_exclude = ["12834"]
+to_exclude = []
 
 to_bidsify = []
 for subject in project.subjects():
@@ -35,7 +35,7 @@ for subject in project.subjects():
 
 
 #destination for data to be saved
-dest_folder = "/Volumes/BCI/SAGE/BIDS_data/"
+dest_folder = "/Volumes/MAPT/fMRI/BIDS_data/"
 
 donefolders = os.listdir(dest_folder)
 donefolders.sort()
@@ -56,10 +56,10 @@ print(to_bidsify)
 
 for subject_code in to_bidsify:
 
-    subject_code = subject_code[4:9]
+    subject_code = subject_code[4:]
 
     #construct command line command
-    command = "fw export bids --project \"SAGE\" --group \"teich\" --subject \"%s\" %s" %(subject_code,dest_folder)
+    command = "fw export bids --project \"MAPT\" --group \"jkaplan\" --subject \"%s\" %s" %(subject_code,dest_folder)
 
     #run it
     print(command)
