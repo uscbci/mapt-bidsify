@@ -41,6 +41,7 @@ for subject in project.subjects():
             to_bidsify.append(subject)
         else:
             print("Excluding this subject")
+            
 
 print ("Will do:")
 print(to_bidsify)
@@ -49,7 +50,7 @@ for subject in to_bidsify:
     print("Working on subject %s" % subject.code)
 
     #Set up the gear
-    analysis_label = "bids curate"
+    analysis_label = "bids curate 1_27"
     inputs = {}
     dest = subject
 
