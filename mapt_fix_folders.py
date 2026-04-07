@@ -36,7 +36,7 @@ for subject_code in allsubjects:
                 if (fn_subj != subject_number):
 
                     oldpath = "%s/%s" % (modal_path,file)
-                    newfilename = re.sub("\d\d+",subject_number,file)
+                    newfilename = re.sub("\d\d\d+",subject_number,file)
                     newpath = "%s/%s" % (modal_path,newfilename)
 
                     print("Rename %s to %s" % (oldpath,newpath))
